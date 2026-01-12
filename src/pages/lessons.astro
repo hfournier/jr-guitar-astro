@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import drop_in_prices from "../data/drop_in_prices.json";
 import pre_paid_prices from "../data/pre_paid_prices.json";
@@ -45,13 +45,11 @@ const description = "JR Guitar provides guitar lessons and coaching";
         Book an appointment now!
       </ButtonLink>
     </div>
-    <Picture
-      class="mx-auto mt-8 aspect-video max-w-fit rounded-md"
+    <Image
+      class="mx-auto mt-8 aspect-video max-w-full rounded-md"
       src={import("../assets/jim-rhindress-guitars.jpg")}
       alt="Jim Rhindress sitting with several guitars"
-      widths={[400, 736, 750]}
-      sizes="(max-width: 782px) calc(100vw - 32px), (max-width: 1024px) 750px, 750px"
-      formats={["avif", "webp"]}
+      layout="constrained"
     />
   </section>
 </BaseLayout>

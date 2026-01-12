@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 console.log("404 Page not found");
@@ -12,12 +12,10 @@ console.log(Astro.url);
     Oops! Looks like you broke something... or we just couldn't find what you
     were looking for. Sorry about that.
   </div>
-  <Picture
+  <Image
     class="mx-auto mt-8 aspect-video max-w-fit rounded-md"
     src={import("../assets/broken-guitar.jpg")}
     alt="Broken electric guitar"
-    widths={[400, 736, 750]}
-    sizes="(max-width: 782px) calc(100vw - 32px), (max-width: 1024px) 750px, 750px"
-    formats={["avif", "webp"]}
+    layout="constrained"
   />
 </BaseLayout>

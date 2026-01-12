@@ -1,7 +1,6 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import jim from "../assets/jim-rhindress-portrait.jpg";
 
 const title = "About Jim Rhindress | JR Guitar | Kelowna, BC";
 const description =
@@ -14,13 +13,14 @@ const description =
       <h1>About Jim Rhindress</h1>
     </div>
     <div class="mt-8 flex flex-wrap items-start justify-evenly sm:flex-nowrap">
-      <Picture
+      <Image
         class="aspect-2/3 max-w-fit rounded-md"
         src={import("../assets/jim-rhindress-portrait.jpg")}
         alt="Portrait of Jim Rhindress"
-        widths={[350]}
-        sizes="(max-width: 382px) calc(100vw - 32px), (max-width: 639px) 350px, (max-width: 767px) 25vw, (max-width: 1024px) 34vw, 350px"
-        formats={["avif", "webp"]}
+        loading="eager"
+        decoding="async"
+        layout="constrained"
+        fetchpriority="high"
       />
       <div class="max-w-full pt-6 sm:px-8 sm:pt-0">
         <p>

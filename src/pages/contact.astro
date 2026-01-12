@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FormNetlify from "../components/FormNetlify.astro";
 import InputText from "../components/InputText.astro";
@@ -17,13 +17,14 @@ const description = "JR Guitar you can get in touch with us by phone or email";
     </div>
     <!-- <div class="grid items-center grid-flow-col auto-cols-fr"> -->
     <div class="mt-8 flex flex-wrap items-center justify-evenly sm:flex-nowrap">
-      <Picture
+      <Image
         class="aspect-square max-w-fit rounded-md"
         src={import("../assets/jr-guitar-house.jpg")}
         alt="Photo of house, which is the home of JR Guitar"
-        widths={[300]}
-        sizes="(max-width: 332px) calc(100vw - 32px), (max-width: 1024px) 300px, 300px"
-        formats={["avif", "webp"]}
+        loading="eager"
+        decoding="async"
+        layout="constrained"
+        fetchpriority="high"
       />
       <div class="m-0 max-w-full pt-4 sm:px-8 sm:pt-0">
         JR Guitar is located at

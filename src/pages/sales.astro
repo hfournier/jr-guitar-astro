@@ -2,7 +2,7 @@
 import YouTubeSvg from "../assets/svgs/youtube.svg";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import for_sale from "../data/for-sale.json";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 
 interface ItemForSale {
   title: string;
@@ -24,13 +24,14 @@ const description = "JR Guitar sells and custom builds dream guitars";
       in-house or recent trades. But, inventory is constantly changing, so check
       here often to see what's available.
     </p>
-    <Picture
-      class="mx-auto my-4 aspect-700/782 max-w-fit rounded-md"
+    <Image
+      class="mx-auto my-4 aspect-700/782 max-w-full rounded-md"
       src={import("../assets/guitars-for-sale.jpg")}
       alt="Several electric guitars on display for sale"
-      widths={[400, 700]}
-      sizes="(max-width: 732px) calc(100vw - 32px), (max-width: 1024px) 700px, 700px"
-      formats={["avif", "webp"]}
+      loading="eager"
+      decoding="async"
+      layout="constrained"
+      fetchpriority="high"
     />
     <p>I have several demo videos of guitars that are on sale now:</p>
     <div class="max-w-fit pl-8">
