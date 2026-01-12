@@ -1,16 +1,16 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import ButtonLink from "./ButtonLink.astro";
 ---
 
 <section class="not-prose relative mx-auto max-w-5xl">
-  <Picture
+  <Image
     class="m-0 aspect-video w-full"
     src={import("../assets/hero.jpg")}
     alt="Close up of hands playing guitar"
-    widths={[640, 768, 1024]}
-    sizes="(max-width: 1024px) 100vw, 1024px"
-    formats={["avif", "webp"]}
+    loading="eager"
+    decoding="async"
+    layout="constrained"
   />
   <div class="sm:absolute sm:inset-0 sm:w-3/4 sm:bg-linear-to-r sm:from-black">
   </div>
