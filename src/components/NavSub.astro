@@ -1,0 +1,20 @@
+---
+import links from "../data/links.json";
+---
+
+<nav aria-label="Footer Navigation" class="flex flex-col gap-2 pl-6">
+  {
+    links.map(
+      ({ href, text }) =>
+        Astro.url.pathname !== href && (
+          <a
+            href={href}
+            class="max-w-fit rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700 aria-[current='page']:text-yellow-200"
+            aria-current={Astro.url.pathname === href ? "page" : null}
+          >
+            {text}
+          </a>
+        )
+    )
+  }
+</nav>

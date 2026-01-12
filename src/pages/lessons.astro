@@ -1,0 +1,57 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import drop_in_prices from "../data/drop_in_prices.json";
+import pre_paid_prices from "../data/pre_paid_prices.json";
+import ButtonLink from "../components/ButtonLink.astro";
+const title = "Guitar Lessons and coaching | JR Guitar | Kelowna, BC";
+const description = "JR Guitar provides guitar lessons and coaching";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="max-w-full pb-8 pt-8 sm:pt-14 md:pt-16">
+    <h1>Guitar Lessons and Coaching</h1>
+    <p>
+      I am available for guitar lessons and coaching. Players can choose between
+      a flexible drop-in guitar lesson or a more economical prepaid package of 4
+      guitar lessons.
+    </p>
+    <p>Drop-in prices are:</p>
+    <ul class="list-inside pl-4">
+      {
+        drop_in_prices.map(({ description, price }) => (
+          <li>
+            <strong>{price}</strong> {description}
+          </li>
+        ))
+      }
+    </ul>
+    <p>Pre-paid prices are:</p>
+    <ul class="list-inside pl-4">
+      {
+        pre_paid_prices.map(({ description, price }) => (
+          <li>
+            <strong>{price}</strong> {description}
+          </li>
+        ))
+      }
+    </ul>
+    <small>All prices include GST</small>
+    <div class="mt-4 flex w-full justify-center">
+      <ButtonLink
+        href="http://kelownavoicelab.calendarspots.com/"
+        target="calendarspots"
+      >
+        Book an appointment now!
+      </ButtonLink>
+    </div>
+    <Picture
+      class="mx-auto mt-8 aspect-video max-w-fit rounded-md"
+      src={import("../assets/jim-rhindress-guitars.jpg")}
+      alt="Jim Rhindress sitting with several guitars"
+      widths={[400, 736, 750]}
+      sizes="(max-width: 782px) calc(100vw - 32px), (max-width: 1024px) 750px, 750px"
+      formats={["avif", "webp"]}
+    />
+  </section>
+</BaseLayout>

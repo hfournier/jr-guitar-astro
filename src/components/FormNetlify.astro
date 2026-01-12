@@ -1,0 +1,19 @@
+---
+const { name, ...attrs } = Astro.props;
+---
+
+<form
+  class="w-full space-y-6 rounded-lg border-2 border-yellow-500 p-5 text-left lg:p-10"
+  name={name}
+  method="post"
+  data-netlify="true"
+  netlify-honeypot="extra-info"
+  {...attrs}
+>
+  <div class="hidden">
+    <label>
+      Don’t fill this out if you’re human: <input name="extra-info" />
+    </label>
+  </div>
+  <slot />
+</form>

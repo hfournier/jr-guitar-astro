@@ -1,0 +1,78 @@
+---
+import YouTubeSvg from "../assets/svgs/youtube.svg";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import for_sale from "../data/for-sale.json";
+import { Picture } from "astro:assets";
+
+interface ItemForSale {
+  title: string;
+  url: string;
+  status: string;
+  price?: number;
+}
+const itemsForSale: ItemForSale[] = for_sale;
+
+const title = "Guitar Sales | JR Guitar | Kelowna, BC";
+const description = "JR Guitar sells and custom builds dream guitars";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="max-w-full pb-8 pt-8 sm:pt-14 md:pt-16">
+    <h1>Guitar Sales</h1>
+    <p>
+      Jim usually has Telecasters and Stratocasters that are either assembled
+      in-house or recent trades. But, inventory is constantly changing, so check
+      here often to see what's available.
+    </p>
+    <Picture
+      class="mx-auto my-4 aspect-700/782 max-w-fit rounded-md"
+      src={import("../assets/guitars-for-sale.jpg")}
+      alt="Several electric guitars on display for sale"
+      widths={[400, 700]}
+      sizes="(max-width: 732px) calc(100vw - 32px), (max-width: 1024px) 700px, 700px"
+      formats={["avif", "webp"]}
+    />
+    <p>I have several demo videos of guitars that are on sale now:</p>
+    <div class="max-w-fit pl-8">
+      {
+        itemsForSale.map(({ title, url, status, price }) => (
+          <div>
+            {url && (
+              <a
+                class="flex items-center gap-4 rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+                href={url}
+                target="youtube"
+              >
+                <YouTubeSvg class="h-8" aria-label="YouTube icon" />
+                <div>{title}</div>
+              </a>
+            )}
+            {!url && <span class="pl-8">{title}</span>}
+            {status === "Sold" && (
+              <span>
+                &nbsp;(<strong>{status}</strong>)
+              </span>
+            )}
+            {status === "Available" && price && <strong>{price}</strong>}
+          </div>
+        ))
+      }
+    </div>
+    <p>
+      Phone or text Jim Rhindress at
+      <a
+        class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+        href="tel:+12503175233">250.317.5233</a
+      >
+      for full descriptions or to set up a time to swing by and play these beauties.
+    </p>
+    <p>
+      Based on your budget, playing style, and preferences, Jim can custom build
+      your dream electric guitar.
+    </p>
+    <p>
+      He also specializes in aging (relicing) guitars to turn them into
+      beautiful authentic looking road-worn beauties.
+    </p>
+  </section>
+</BaseLayout>

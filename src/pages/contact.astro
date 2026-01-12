@@ -1,0 +1,98 @@
+---
+import { Picture } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FormNetlify from "../components/FormNetlify.astro";
+import InputText from "../components/InputText.astro";
+import Button from "../components/Button.astro";
+import InputTextarea from "../components/InputTextarea.astro";
+
+const title = "Guitar Contact info | JR Guitar | Kelowna, BC";
+const description = "JR Guitar you can get in touch with us by phone or email";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="pt-8 sm:pt-14 md:pt-16">
+    <div class="max-w-full">
+      <h1>Contact Me</h1>
+    </div>
+    <!-- <div class="grid items-center grid-flow-col auto-cols-fr"> -->
+    <div class="mt-8 flex flex-wrap items-center justify-evenly sm:flex-nowrap">
+      <Picture
+        class="aspect-square max-w-fit rounded-md"
+        src={import("../assets/jr-guitar-house.jpg")}
+        alt="Photo of house, which is the home of JR Guitar"
+        widths={[300]}
+        sizes="(max-width: 332px) calc(100vw - 32px), (max-width: 1024px) 300px, 300px"
+        formats={["avif", "webp"]}
+      />
+      <div class="m-0 max-w-full pt-4 sm:px-8 sm:pt-0">
+        JR Guitar is located at
+        <a
+          class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+          href="https://www.google.ca/maps/place/888+Wardlaw+Ave,+Kelowna,+BC+V1Y+5B9/@49.867648,-119.4855165,17z/data=!3m1!4b1!4m5!3m4!1s0x537d8b5075d61c05:0xf98d94b6440b5ad!8m2!3d49.8676446!4d-119.4833225"
+          target="maps">888 Wardlaw Ave</a
+        >, which is a carriage house <strong>BEHIND</strong> 886 Wardlaw Ave. It is
+        accessed by the laneway between Patterson Ave and Wardlaw Ave (first house
+        on the left). Look for a musical flag. Please
+        <strong>DO NOT</strong> park in front of our house, as it blocks the lane
+        and the city will tow your vehicle. You can park on our driveway or in the
+        empty lot next door.
+      </div>
+    </div>
+    <div class="mt-6 max-w-full">
+      <p>
+        If you need to book one of my projects -
+        <a
+          class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+          href="https://www.cover2coverkelowna.com/"
+          target="cover2cover">Cover2Cover</a
+        >,
+        <a
+          class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+          href="https://www.smittenkelowna.com/"
+          target="smitten">Rhindress or Smitten</a
+        >
+        , want a studio musician or need JR Guitar to do some guitar work for you,
+        text me or give me a call at
+        <a
+          class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+          href="tel:+12503175233">250.317.5233</a
+        >
+        (between 9:00 am and 9:00 pm). Or use the form below to message me:
+      </p>
+    </div>
+  </section>
+  <section class="mx-auto mt-8 flex max-w-md justify-center pb-8">
+    <FormNetlify name="contact">
+      <InputText
+        error="Your name is required"
+        label="Your Name"
+        name="username"
+        type="text"
+      />
+      <InputText
+        error="A valid email is required"
+        label="Email"
+        name="email"
+        type="email"
+      />
+      <InputText
+        error="A subject is required"
+        label="Subject"
+        name="subject"
+        type="text"
+      />
+      <InputTextarea
+        error="A message is required"
+        label="Message"
+        name="message"
+        rows="4"
+      />
+
+      <div class="flex space-x-2">
+        <Button>Send Message</Button>
+        <Button type="reset" outline={true}>Clear</Button>
+      </div>
+    </FormNetlify>
+  </section>
+</BaseLayout>

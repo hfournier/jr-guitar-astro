@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const allBlogPosts = await getCollection("blogs");
+
+const title = "JR Guitar Blog | JR Guitar | Kelowna, BC";
+const description = "JR Guitar blog about issues realting to guitars";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="pt-8 sm:pt-14 md:pt-16">
+    <div class="max-w-full">
+      <h1>Blog</h1>
+    </div>
+    {
+      allBlogPosts.map((blogPost) => (
+        <article class="my-10">
+          <div class="mx-2 text-sm text-stone-600">
+            On
+            <time datetime={blogPost.data.date.toISOString()}>
+              {blogPost.data.date.toLocaleDateString("en-ca", {
+                weekday: "short",
+                year: "numeric",
+                month: "short",
+                day: "numeric",
+              })}
+            </time>
+            {blogPost.data.author} wrote:
+          </div>
+          <h2
+            class="mx-4 text-xl md:text-3xl mt-2 mb-4"
+            transition:name={`tn-${blogPost?.slug}`}
+          >
+            <a
+              class="rounded-sm text-yellow-700 no-underline underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+              href={blogPost.slug}
+            >
+              {blogPost.data.title}
+            </a>
+          </h2>
+          {blogPost.data.description && (
+            <p class="mx-4 text-lg text-stone-500 mb-2">
+              {blogPost.data.description}
+            </p>
+          )}
+
+          <a
+            href={`/blog/${blogPost.slug}`}
+            class="mx-4 rounded-sm text-yellow-700 no-underline underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-1 focus-visible:ring-offset-yellow-100"
+          >
+            Read more →
+          </a>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

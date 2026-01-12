@@ -1,0 +1,119 @@
+---
+import AdjustmentsSvg from "../assets/svgs/adjustments.svg";
+import GuitarPickSvg from "../assets/svgs/guitar-pick.svg";
+import GuitarAcousticSvg from "../assets/svgs/guitar-acoustic.svg";
+import MoneySvg from "../assets/svgs/attach-money.svg";
+import MusicSvg from "../assets/svgs/music.svg";
+import BlockQuote from "../components/BlockQuote.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import Warning from "../components/Warning.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "JR Guitar | Repair | Sales | Lessons | Kelowna, BC";
+const description =
+  "Jim Rhindress is a sought after Kelowna-based classic rock guitar player, vocalist, band leader and busy guitar repair technician";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="max-w-full">
+    <Warning>
+      <strong>COVID-19 UPDATE:</strong> Guitar repairs are still being done, but drop-offs
+      will be at the front door and only one person can enter when picking up. Everyone
+      in our home is healthy. If you, or someone in your home is sick, please save
+      your guitar repair until you are all well. Give me a call if you have any questions.
+      Stay safe everyone!
+    </Warning>
+    <p class="mb-0! py-8 text-center sm:px-12 md:px-24 md:py-12 md:text-lg">
+      The JR Guitar repair shop is equipped to do everything from setups, to
+      fret work, to body repair for both electric and acoustic guitars, basses,
+      mandolins, violins and cellos.<br />You can trust JR Guitar with all your
+      babies.
+    </p>
+  </section>
+  <section class="grid grid-cols-1 px-8 py-4 sm:grid-cols-3 sm:gap-8">
+    <div class="mb-16 text-center sm:mx-auto sm:mb-0 space-y-4">
+      <h2 class="m-4">Repairs</h2>
+      <div class="grid [grid-template-areas:'stack'] place-items-center">
+        <GuitarPickSvg
+          class="h-24 [grid-area:stack] w-full"
+          aria-label="Guitar pick background for icon"
+        />
+        <AdjustmentsSvg
+          class="h-8 text-yellow-50 [grid-area:stack] w-full"
+          aria-label="Electric guitar icon"
+        />
+      </div>
+      <p>
+        Your satisfaction is my primary concern and I will always do my utmost
+        to exceed all your expectations
+      </p>
+      <ButtonLink href="/guitar-repairs-kelowna/" outline={true} size="sm">
+        Repairs
+      </ButtonLink>
+    </div>
+    <div class="relative mb-16 text-center sm:mx-auto sm:mb-0 space-y-4">
+      <h2 class="m-4">Sales</h2>
+      <div class="grid [grid-template-areas:'stack'] place-items-center">
+        <GuitarPickSvg
+          class="h-24 [grid-area:stack] w-full"
+          aria-label="Guitar pick background for icon"
+        />
+        <MoneySvg
+          class="h-8 text-yellow-50 [grid-area:stack] w-full"
+          aria-label="Dollar sign icon"
+        />
+      </div>
+      <p>
+        Inventory is contantly in flux, but if I don't have what you need, I
+        might be able to custom build it for you
+      </p>
+      <ButtonLink href="/sales/" outline={true} size="sm">Sales</ButtonLink>
+    </div>
+    <div class="mb-4 text-center sm:mx-auto sm:mb-0 space-y-4">
+      <h2 class="m-4">Lessons</h2>
+      <div class="grid [grid-template-areas:'stack'] place-items-center">
+        <GuitarPickSvg
+          class="h-24 [grid-area:stack] w-full"
+          aria-label="Guitar pick background for icon"
+        />
+        <MusicSvg
+          class="h-8 text-yellow-50 [grid-area:stack] w-full"
+          aria-label="Musical Note icon"
+        />
+      </div>
+      <p>
+        I can customize one-on-one guitar lessons and coaching to help you
+        progress to the next level
+      </p>
+      <ButtonLink href="/lessons/" outline={true} size="sm">Lessons</ButtonLink>
+    </div>
+  </section>
+  <section class="max-w-full">
+    <div class="my-8 flex justify-center">
+      <BlockQuote cite="Brian Burnham, Kelowna, BC">
+        Jim is a unique combination of guitar master, repair guru and great guy.
+        His passion for the guitar shows through everything he does; I am loving
+        the custom Tele he sold me last year. You can't go wrong with sending
+        your babies to Jim. He'll take great care of them as he did with my
+        Strat. Thanks brother..!
+      </BlockQuote>
+    </div>
+    <p>
+      I always have a wide variety of electric and acoustic guitars for sale, so
+      check
+      <a
+        class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+        href="/sales">what's for sale right now</a
+      >, including demo videos. If there is something specific you're interested
+      in, just give me a call and I can keep an eye out for you. Because I am a
+      small shop, I am also always interested in trading gear as well, so if you
+      have an amp or an acoustic guitar you'd like to swap out for a guitar or
+      bass, give me a call at
+      <a
+        class="rounded-sm text-yellow-700 no-underline hover:text-yellow-600 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+        href="tel:+12503175233">250.317.5233</a
+      >.
+    </p>
+    <small>* Please call before dropping by</small>
+  </section>
+</BaseLayout>

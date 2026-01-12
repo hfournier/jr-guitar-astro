@@ -1,0 +1,24 @@
+---
+interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  outline?: boolean;
+  size?: "lg" | "md" | "sm";
+}
+const { outline = false, size = "md", ...attrs } = Astro.props;
+---
+
+<a
+  class="rounded font-bold uppercase no-underline hover:bg-yellow-800 hover:text-yellow-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-600 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-100"
+  class:list={[
+    size === "sm"
+      ? "px-3 py-1 text-sm"
+      : size === "lg"
+      ? "px-5 py-3 text-lg"
+      : "px-4 py-2",
+    outline
+      ? "bg-transparent text-yellow-700 border border-yellow-700"
+      : "bg-yellow-700 text-white",
+  ]}
+  {...attrs}
+>
+  <slot />
+</a>

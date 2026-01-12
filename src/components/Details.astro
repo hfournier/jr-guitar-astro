@@ -1,0 +1,27 @@
+---
+import ChevronDownSvg from "../assets/svgs/chevron-down.svg";
+
+type Props = {
+  category: string;
+};
+const { category } = Astro.props;
+---
+
+<details
+  class:list={[
+    "group rounded border border-yellow-800 px-4 py-2 overflow-clip",
+    "details-content:transition-[height,content-visibility] details-content:transition-discrete details-content:duration-500 details-content:ease-in-out details-content:h-0 open:details-content:h-auto",
+  ]}
+>
+  <summary
+    class="flex w-full cursor-pointer list-none items-center justify-between rounded-sm outline-none focus-visible:text-yellow-700 focus-visible:ring-2 focus-visible:ring-yellow-700 focus-visible:ring-offset-4 focus-visible:ring-offset-yellow-50 prose-h3:my-0"
+  >
+    <h3 class="text-yellow-800">{category}</h3>
+    <ChevronDownSvg
+      class="h-8 w-8 shrink-0 origin-center text-yellow-800 transition-[rotate] duration-500 group-open:rotate-180"
+      aria-label="Expand or Collapse this section"
+    />
+  </summary>
+
+  <slot />
+</details>

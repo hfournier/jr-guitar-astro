@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-ubuntu: "Ubuntu", sans-serif;
+}
+
+@layer base {
+  .scrollable::-webkit-scrollbar {
+    @apply h-2 w-2 bg-yellow-50;
+  }
+  .scrollable::-webkit-scrollbar-track {
+    @apply rounded-full bg-yellow-50;
+  }
+  .scrollable::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-yellow-700 hover:bg-yellow-600;
+  }
+  @supports (scrollbar-color: darkgray lightgray) {
+    .scrollable {
+      scrollbar-width: thin;
+      scrollbar-color: theme(colors.yellow.700) theme(colors.yellow.50);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}

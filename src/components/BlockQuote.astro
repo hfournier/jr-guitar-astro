@@ -1,0 +1,15 @@
+---
+const { cite, source } = Astro.props;
+---
+
+<blockquote
+  class="border-yellow-800 text-yellow-800 lg:max-w-[70%]"
+  cite={source ?? null}
+>
+  <slot />
+  {
+    cite !== undefined && (
+      <cite class="text-sm text-yellow-700"> -- {cite}</cite>
+    )
+  }
+</blockquote>

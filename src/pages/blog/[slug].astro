@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blogs");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { blog: entry },
+  }));
+}
+
+const { blog } = Astro.props;
+const { Content } = await blog.render();
+---
+
+<BaseLayout title={blog?.data.title} description={blog?.data.description}>
+  <section
+    class="mx-auto max-w-5xl bg-yellow-50 px-4 pb-4 pt-8 sm:pt-14 md:pt-16"
+  >
+    <div class="container max-w-3xl px-6">
+      <h1 transition:name={`tn-${blog?.slug}`}>{blog?.data.title}</h1>
+      <Content />
+    </div>
+  </section>
+</BaseLayout>

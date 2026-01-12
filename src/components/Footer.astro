@@ -1,0 +1,92 @@
+---
+import GuitarCurveSvg from "../assets/svgs/guitar-curve-footer.svg";
+import NavSub from "./NavSub.astro";
+import SocialLinks from "./SocialLinks.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="prose-base mx-auto max-w-5xl bg-yellow-50 text-center">
+  <GuitarCurveSvg
+    class="text-stone-700"
+    aria-label="curved shape hinting at the top of a guitar"
+  />
+  <div class="bg-stone-700 pb-4 text-stone-300">
+    <div class="grid grid-cols-1 py-4 sm:grid-cols-3">
+      <div class="mb-4 ml-16 text-left sm:mx-auto sm:mb-0">
+        <h4 class="prose-invert">Navigation</h4>
+        <NavSub />
+      </div>
+      <div class="mb-4 ml-16 text-left sm:mx-auto sm:mb-0">
+        <h4 class="prose-invert">Related</h4>
+        <ul class="list-none pl-4">
+          <li>
+            <a
+              class="rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700"
+              href="https://www.cover2coverkelowna.com/"
+              target="cover2cover"
+            >
+              Cover2Cover</a
+            >
+          </li>
+          <li>
+            <a
+              class="rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700"
+              href="https://www.smittenkelowna.com/"
+              target="smitten"
+            >
+              Smitten!</a
+            >
+          </li>
+          <li>
+            <a
+              class="rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700"
+              href="https://www.kelownavoicelab.com/"
+              target="kelownavoicelab"
+            >
+              Kelowna Voice Lab</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="mb-4 ml-16 text-left sm:mx-auto sm:mb-0">
+        <h4 class="prose-invert">Contact</h4>
+        <ul class="list-none pl-4">
+          <li
+            class="pb-1"
+            class:list={[
+              Astro.url.pathname === "/contact/" ? "text-yellow-200" : "",
+            ]}
+          >
+            <a
+              class="rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700"
+              href="/contact/">Message Me</a
+            >
+          </li>
+          <li class="pb-1">
+            Call or text (9:00 am - 9:00 pm)<br />
+            <a
+              class="rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700"
+              href="tel:+12503175233">250.317.5233</a
+            >
+          </li>
+          <li class="pb-1">
+            <a
+              class="flex max-w-fit flex-col rounded-sm text-yellow-50 no-underline underline-offset-4 hover:text-yellow-200 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-stone-700"
+              href="https://www.google.ca/maps/place/888+Wardlaw+Ave,+Kelowna,+BC+V1Y+5B9/@49.867648,-119.4855165,17z/data=!3m1!4b1!4m5!3m4!1s0x537d8b5075d61c05:0xf98d94b6440b5ad!8m2!3d49.8676446!4d-119.4833225"
+              target="maps"
+              ><span>888 Wardlaw Ave</span><span>Kelowna, BC</span><span
+                >V1Y 5B9</span
+              ></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <SocialLinks />
+    <div class="px-4 py-8">
+      I love to talk guitars and am always open to sales and/or trades.
+    </div>
+    <small>Copyright © JR Guitar {year}</small>
+  </div>
+</footer>

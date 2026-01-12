@@ -1,0 +1,45 @@
+---
+import GuitarCurveSvg from "../assets/svgs/guitar-curve-header.svg";
+import JRGuitarLogoSvg from "../assets/svgs/jr-guitar-logo.svg";
+import MenuToggleSvg from "../assets/svgs/menu-toggle.svg";
+import NavMain from "./NavMain.astro";
+import NavMobile from "./NavMobile.astro";
+---
+
+<header class="relative isolate z-20 mx-auto w-full max-w-5xl bg-yellow-100">
+  <div
+    class="relative flex items-center justify-between bg-yellow-800 px-4 [&>input:checked_~_label>svg>path:first-child]:opacity-0 [&>input:checked_~_label>svg>path:last-child]:opacity-100 [&>input:checked_~_nav]:top-12"
+  >
+    <!-- logo -->
+    <div class="flex items-center">
+      <a
+        href="/"
+        class="my-2 h-full rounded focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-800"
+      >
+        <JRGuitarLogoSvg
+          class="h-9 text-white md:h-12"
+          aria-label="JR Guitar logo"
+        />
+        <span class="sr-only">JR Guitar</span>
+      </a>
+    </div>
+    <!-- mobile button -->
+    <input id="menuBtn" type="checkbox" class="hidden" />
+    <label
+      class="text-stone-200 hover:text-white focus:outline-none md:hidden"
+      aria-hidden="true"
+      for="menuBtn"
+    >
+      <MenuToggleSvg
+        class="h-6 w-6 text-yellow-50 hover:text-yellow-200"
+        aria-label="Open and close menu button"
+      />
+    </label>
+    <NavMain />
+    <NavMobile />
+  </div>
+  <GuitarCurveSvg
+    class="absolute left-0 z-20 text-yellow-800"
+    aria-label="curved shape hinting at the bottom of a guitar"
+  />
+</header>

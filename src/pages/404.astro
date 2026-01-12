@@ -1,0 +1,24 @@
+---
+import { Picture } from "@astrojs/image/components";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+console.log("404 Page not found");
+console.log(Astro.url);
+---
+
+<BaseLayout title="Page not found">
+  <h1 class="">Page Not Found</h1>
+  <div class="text-center text-lg">
+    Oops! Looks like you broke something... or we just couldn't find what you
+    were looking for. Sorry about that.
+  </div>
+  <Picture
+    class="mx-auto mt-8 aspect-video max-w-fit rounded-md"
+    src={import("../assets/broken-guitar.jpg")}
+    alt="Broken electric guitar"
+    aspectRatio="16:9"
+    widths={[400, 736, 750]}
+    sizes="(max-width: 782px) calc(100vw - 32px), (max-width: 1024px) 750px, 750px"
+    formats={["avif", "webp"]}
+  />
+</BaseLayout>

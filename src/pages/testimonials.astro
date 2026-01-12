@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import testimonials from "../data/testimonials.json";
+import BlockQuote from "../components/BlockQuote.astro";
+
+const title = "Testimonials | JR Guitar | Kelowna, BC";
+const description = "Hear what JR Guitar customers have to say about my work.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="max-w-full pt-8 sm:pt-14 md:pt-16">
+    <h1>Testimonials</h1>
+
+    <div class="mt-8 flex max-w-full flex-col gap-8 px-4 sm:px-8">
+      {
+        testimonials.map(({ author, comment, date, location }) => (
+          <div class="flex lg:even:justify-end">
+            <BlockQuote cite={author + ", " + location}>{comment}</BlockQuote>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

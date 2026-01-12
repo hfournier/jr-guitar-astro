@@ -1,0 +1,22 @@
+---
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+  outline?: boolean;
+  size?: "lg" | "md" | "sm";
+}
+const { outline = false, size = "md", ...attrs } = Astro.props;
+---
+
+<button
+  class="rounded border-yellow-700 font-bold uppercase outline-none hover:border-yellow-800 hover:bg-yellow-800 hover:text-yellow-50 focus-visible:ring-2 focus-visible:ring-yellow-700 focus-visible:ring-offset-2 active:bg-yellow-700 active:text-white"
+  class:list={[
+    size === "sm"
+      ? "px-3 py-1 text-sm"
+      : size === "lg"
+      ? "px-5 py-3 text-lg"
+      : "px-4 py-2",
+    outline ? "bg-transparent text-yellow-700" : "bg-yellow-700 text-white",
+  ]}
+  {...attrs}
+>
+  <slot />
+</button>

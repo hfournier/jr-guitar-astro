@@ -1,0 +1,30 @@
+---
+import GuitarPickSvg from "../assets/svgs/guitar-pick.svg";
+import links from "../data/links.json";
+---
+
+<nav
+  aria-label="Main Navigation"
+  class="z-20 hidden items-center space-x-1 md:flex"
+>
+  {
+    links.map(
+      ({ href, text }) =>
+        href !== "/" && (
+          <div class="relative px-3 py-5">
+            <a
+              href={href}
+              class="peer rounded-sm text-yellow-50 no-underline hover:text-yellow-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-yellow-100 focus-visible:ring-offset-4 focus-visible:ring-offset-yellow-800 aria-[current='page']:text-yellow-300"
+              aria-current={Astro.url.pathname === href ? "page" : null}
+            >
+              {text}
+            </a>
+            <GuitarPickSvg
+              class="absolute inset-0 top-2 mx-auto h-4 text-yellow-300 opacity-0 transition-opacity peer-hover:opacity-100 peer-aria-[current='page']:text-yellow-50 peer-aria-[current='page']:opacity-100"
+              aria-label="Guitar pick over selected menu items"
+            />
+          </div>
+        )
+    )
+  }
+</nav>

@@ -1,0 +1,39 @@
+---
+import GuitarPickSvg from "../assets/svgs/guitar-pick.svg";
+import links from "../data/links.json";
+---
+
+<nav
+  aria-label="Main Navigation"
+  class="absolute -top-96 right-0 -z-10 ml-auto w-52 transform border-l-2 border-r-2 border-stone-800 bg-stone-800 pb-4 pt-12 text-right transition-all duration-300 ease-in-out md:hidden"
+>
+  <div class="border-t-8 border-stone-300">
+    <div class="border-t-2 border-stone-500 pt-4">
+      {
+        links.map(
+          ({ href, text }) =>
+            href !== "/" && (
+              <div
+                class="relative border-b-2 border-stone-500 
+                    even:before:absolute even:before:inset-0 even:before:m-auto even:before:aspect-square even:before:w-4 even:before:rounded-full even:before:bg-stone-200 even:before:opacity-20"
+              >
+                <div class="flex flex-row-reverse items-center gap-3 border-b-2 border-stone-300 px-4 py-2">
+                  <a
+                    href={href}
+                    class="peer text-yellow-50 no-underline hover:text-yellow-300 hover:underline hover:underline-offset-2 aria-[current='page']:text-yellow-300"
+                    aria-current={Astro.url.pathname === href ? "page" : null}
+                  >
+                    {text}
+                  </a>
+                  <GuitarPickSvg
+                    class="h-4 text-yellow-300 opacity-0 transition-opacity peer-hover:opacity-100 peer-aria-[current='page']:text-yellow-50 peer-aria-[current='page']:opacity-100"
+                    aria-label="Guitar pick next to selected menu items"
+                  />
+                </div>
+              </div>
+            )
+        )
+      }
+    </div>
+  </div>
+</nav>
